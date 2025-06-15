@@ -66,3 +66,60 @@ def decrypt_password(password):
     :return: password after decryption
     """
     return functools.reduce(lambda x, y: x + y, [chr(2 + ord(x)) if x.isalpha() else x for x in password])
+
+############################################## final exercise ##############################################
+
+
+def print_longest_line(file_name):
+    """
+    prints the longest line in the file
+    :param file_name: path to file
+    :return: None
+    """
+    with open(file_name, 'r') as file:
+        print(functools.reduce(lambda x, y: x if len(x) > len(y) else y, file.read().split('\n')))
+
+
+def print_length_of_file_data(file_name):
+    """
+    prints the sum of each line's length
+    :param file_name: path to file
+    :return: None
+    """
+    with open(file_name, 'r') as file:
+        print(functools.reduce(lambda x, y: x + len(y), file.read().split('\n'), 0))
+
+
+def print_shortest_name(file_name):
+    """
+    prints the shortes lines in the file
+    :param file_name: path to file
+    :return: None
+    """
+    with open(file_name, 'r') as file:
+        print(functools.reduce(lambda x, y: x if len(x) < len(y) else (y if len(y) < len(x) else x + '\n' + y)
+                               , file.read().split('\n')))
+
+
+def write_line_length(file_name, new_file_name):
+    """
+    writes in new file the length of each line in the given file
+    :param file_name: path to the original file
+    :param new_file_name: path to the new file containing the length of each line
+    :return: None
+    """
+    with open(file_name, 'r') as file:
+        with open(new_file_name, 'w') as len_file:
+            len_file.write(functools.reduce(lambda x, y: x + '\n' + y, list(map(lambda x: str(len(x)),
+                                                                                file.read().split('\n'))), ""))
+
+
+def print_by_length(file_name):
+    """
+    receives a number from user and prints all the lines that are that length
+    :param file_name: path to file
+    :return: None
+    """
+    length = int(input("Enter name length: "))
+    with open(file_name, 'r') as file:
+        print(functools.reduce(lambda x, y: x + '\n' + y if len(y) == length else x, file.read().split('\n')))
