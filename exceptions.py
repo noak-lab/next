@@ -37,18 +37,18 @@ def key_err() -> None:
     dict["f"]
 
 
-# def sytax_err() -> None:
-#     """
-#     raises SyntaxError error
-#     """
-#     l = {"g": "g" "h": "g"}
+def sytax_err() -> None:
+    """
+    raises SyntaxError error
+    """
+    l = {"g": "g" "h": "g"}
 
 
-# def indentation_err() -> None:
-#     """
-#     raises IndentationError error
-#     """
-# print("xxx")
+def indentation_err() -> None:
+    """
+    raises IndentationError error
+    """
+print("xxx")
 
 
 def type_err() -> None:
