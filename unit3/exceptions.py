@@ -26,7 +26,6 @@ def import_err() -> None:
     """
     raises ImportError error
     """
-    from math import hhhh
 
 
 def key_err() -> None:

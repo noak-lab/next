@@ -1,5 +1,5 @@
 import string
-import finalExercise.exceptions as exceptions
+import unit3.finalExercise.exceptions as exceptions
 
 MIN_USERNAME_LEN = 3
 MAX_USERNAME_LEN = 16
