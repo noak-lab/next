@@ -1,3 +1,6 @@
+"""
+Exercise 2.3.3
+"""
 class Ferret:
     """
     A class representing a ferret

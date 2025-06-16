@@ -1,3 +1,6 @@
+"""
+Exercise 2.4.2
+"""
 class BigThing:
     def __init__(self, thing) -> None:
         self._thing = thing

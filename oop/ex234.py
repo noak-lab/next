@@ -1,3 +1,6 @@
+"""
+Exercise 2.3.4
+"""
 class Pixel:
     """
     A class representing a pixel
