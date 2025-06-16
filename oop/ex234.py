@@ -13,6 +13,7 @@ class Pixel:
         :param red: a value between 0 and 255
         :param green: a value between 0 and 255
         :param blue: a value between 0 and 255
+        :return: None
         """
         self._x: int = x
         self._y: int = y
@@ -20,7 +21,7 @@ class Pixel:
         self._green: int = green
         self._blue: int = blue
 
-    def set_coords(self, x, y) -> None:
+    def set_coords(self, x: int, y: int) -> None:
         """
         sets pixel's new coordinate
         :param x: new x coordinate

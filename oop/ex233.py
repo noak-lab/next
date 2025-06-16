@@ -11,6 +11,7 @@ class Ferret:
         """
         init function
         :param name: ferrets name
+        :return: None
         """
         self._name: str = name
         self._age: int = 0

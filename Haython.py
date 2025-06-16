@@ -9,6 +9,7 @@ class Animal:
         init function
         :param name: animals name
         :param hunger: animals hunger level
+        :return: None
         """
         self._name: str = name
         self._hunger: int = hunger
@@ -89,6 +90,7 @@ class Skunk(Animal):
         :param name: skunks name
         :param hunger: skunks hunger level
         :param stink_count: skunks stick count
+        :return: None
         """
         Animal.__init__(self, name, hunger)
         self._stink_count: int = stink_count
@@ -137,6 +139,7 @@ class Dragon(Animal):
         :param name: dragons name
         :param hunger: dragons hunger level
         :param color: dragons color
+        :return: None
         """
         Animal.__init__(self, name, hunger)
         self._color: str = color
