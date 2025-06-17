@@ -77,7 +77,7 @@ def read_file(file_name: str) -> str:
         return string
 
 
-########################## 3.2.5 ##########################
+########################## 3.3.2 ##########################
 
 def send_invitation(name: str, age: int) -> None:
     """
