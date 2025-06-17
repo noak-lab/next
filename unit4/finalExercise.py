@@ -47,31 +47,28 @@ def gen_time() -> Generator:
     Generates the time in a day
     :return: a generator containing a string that represents the time
     """
-    end_of_clock: bool = False
     sec_gen: Generator[int] = gen_secs()
     mnts_gen: Generator[int] = gen_minutes()
     hours_gen: Generator[int] = gen_hours()
 
-    sec: int = sec_gen.__next__()
-    mnts: int = mnts_gen.__next__()
-    hour: int = hours_gen.__next__()
+    sec: int = next(sec_gen)
+    mnts: int = next(mnts_gen)
+    hour: int = next(hours_gen)
 
     yield f"{hour}:{mnts}:{sec}"
-    while not end_of_clock:
+    while True:
         try:
-            sec = sec_gen.__next__()
+            sec = next(sec_gen)
         except StopIteration:
             try:
                 sec_gen = gen_secs()
-                sec = sec_gen.__next__()
-                mnts = mnts_gen.__next__()
+                sec = next(sec_gen)
+                mnts = next(mnts_gen)
             except StopIteration:
                 mnts_gen = gen_minutes()
-                mnts = mnts_gen.__next__()
-                hour = hours_gen.__next__()
-
-        finally:
-            yield f"{hour}:{mnts}:{sec}"
+                mnts = next(mnts_gen)
+                hour = next(hours_gen)
+        yield f"{hour}:{mnts}:{sec}"
 
 
 def gen_years(start: int = 2019) -> Generator:
@@ -137,31 +134,31 @@ def gen_date() -> Generator:
     month_gen: Generator[int] = gen_months()
     time_gen: Generator[str] = gen_time()
 
-    year: int = year_gen.__next__()
-    month: int = month_gen.__next__()
+    year: int = next(year_gen)
+    month: int = next(month_gen)
     day_gen = gen_days(month, is_leap_year(year))
-    day: int = day_gen.__next__()
-    time: str = time_gen.__next__()
+    day: int = next(day_gen)
+    time: str = next(time_gen)
 
     yield f"{day}/{month}/{year} " + time
     while True:
         try:
-            time = time_gen.__next__()
-        except RuntimeError or StopIteration:
+            time = next(time_gen)
+        except (RuntimeError, StopIteration):
             try:
                 time_gen = gen_time()
-                time = time_gen.__next__()
-                day = day_gen.__next__()
+                time = next(time_gen)
+                day = next(day_gen)
             except StopIteration:
                 try:
-                    month = month_gen.__next__()
+                    month = next(month_gen)
                 except StopIteration:
                     month_gen = gen_months()
-                    month = month_gen.__next__()
-                    year = year_gen.__next__()
+                    month = next(month_gen)
+                    year = next(year_gen)
                 finally:
                     day_gen = gen_days(month, is_leap_year(year))
-                    day = day_gen.__next__()
+                    day = next(day_gen)
 
         finally:
             yield f"{day}/{month}/{year} " + time
@@ -178,10 +175,10 @@ def main():
     gen: Generator[str] = gen_date()
     while True:
         if x % 1000000 == 0:
-            print(gen.__next__())
+            print(next(gen))
         x += 1
         try:
-            gen.__next__()
+            next(gen)
         except StopIteration:
             pass
 

@@ -1,5 +1,4 @@
 from typing import Generator
-import itertools
 ################################## 4.1.2 ##################################
 
 
@@ -9,7 +8,7 @@ def translate(sentence: str) -> str:
     :param sentence: original sentence
     :return: the translated sentence
     """
-    words: dict[str] = {'esta': 'is', 'la': 'the', 'en': 'in', 'gato': 'cat', 'casa': 'house', 'el': 'the'}
+    words: dict[str, str] = {'esta': 'is', 'la': 'the', 'en': 'in', 'gato': 'cat', 'casa': 'house', 'el': 'the'}
     gen: Generator[str] = (words[i] for i in sentence.split(' '))
     return ' '.join(list(gen))
 
@@ -39,7 +38,7 @@ def first_prime_over(n: int) -> int:
     :return: the prime number
     """
     gen: Generator[int] = (i for i in range(n + 1, n*2 + 1) if is_prime(i))
-    return gen.__next__()
+    return next(gen)
 
 
 ################################## 4.2.2 ##################################
