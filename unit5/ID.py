@@ -26,13 +26,14 @@ class IDIterator:
     def __init__(self, id_num: int) -> None:
         """
         init function
-        :param id_num: initial id number, if id_num isn't valid a default value is set
+        :param id_num: initial id number
         :return: None
+        :raise ValueError: if id_num isn't valid an exception is raised
         """
         if MIN_ID <= id_num <= MAX_ID:
             self._id: int = id_num
         else:
-            self._id: int = MIN_ID
+            raise ValueError
 
     def __iter__(self) -> IDIterator:
         return self
@@ -67,7 +68,7 @@ def main():
     id: int = int(input("Enter id: "))
     it_type: str = input("Generator or Iterator? (gen/it)? ")
     if it_type == "it":
-        it: Iterator = IDIterator(id)
+        it: IDIterator = IDIterator(id)
     else:
         it: Generator = id_generator(id)
 

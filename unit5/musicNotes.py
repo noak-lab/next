@@ -36,7 +36,7 @@ class MusicNotes:
 
 
 def main():
-    notes_iter: Iterator = MusicNotes()
+    notes_iter: MusicNotes = MusicNotes()
     for freq in notes_iter:
         print(freq)
 
