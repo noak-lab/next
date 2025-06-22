@@ -13,7 +13,7 @@ class MusicNotes:
         :return: None
         """
         self._OCT_NUM: int = 5
-        self._freq_list: list[int] = [55, 61.74, 65.41, 73.42, 82.41, 98]
+        self._freq_list: list[int] = [55, 61.74, 65.41, 73.42, 82.41, 87.31, 98]
         self._octave: int = 0
         self._note_index: int = 0
 
@@ -36,7 +36,7 @@ class MusicNotes:
 
 
 def main():
-    notes_iter: Iterator = iter(MusicNotes())
+    notes_iter: Iterator = MusicNotes()
     for freq in notes_iter:
         print(freq)
 

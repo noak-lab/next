@@ -1,6 +1,7 @@
 from __future__ import annotations
 from typing import Generator, Iterator
 MAX_ID: int = 999999999
+MIN_ID: int = 100000000
 
 
 def check_id_valid(id_number: int) -> bool:
@@ -25,10 +26,13 @@ class IDIterator:
     def __init__(self, id_num: int) -> None:
         """
         init function
-        :param id_num: initial id number
+        :param id_num: initial id number, if id_num isn't valid a default value is set
         :return: None
         """
-        self._id: int = id_num
+        if MIN_ID <= id_num <= MAX_ID:
+            self._id: int = id_num
+        else:
+            self._id: int = MIN_ID
 
     def __iter__(self) -> IDIterator:
         return self
@@ -40,7 +44,7 @@ class IDIterator:
         """
         while True:
             self._id += 1
-            if self._id == MAX_ID:
+            if self._id >= MAX_ID:
                 raise StopIteration
             if check_id_valid(self._id):
                 return self._id
@@ -63,7 +67,7 @@ def main():
     id: int = int(input("Enter id: "))
     it_type: str = input("Generator or Iterator? (gen/it)? ")
     if it_type == "it":
-        it: Iterator = iter(IDIterator(id))
+        it: Iterator = IDIterator(id)
     else:
         it: Generator = id_generator(id)
 
