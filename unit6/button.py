@@ -1,7 +1,12 @@
 import tkinter as tk
 
 
-def button_pressed(root):
+def button_pressed(root: tk.Tk) -> None:
+    """
+    adds image to the bottom of parents widget
+    :param root: the parent widget
+    :return: None
+    """
     image = tk.PhotoImage(file="coffe.png")
     image_label = tk.Label(root, image=image)
     image_label.pack(side="bottom")

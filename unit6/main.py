@@ -6,7 +6,11 @@ import os
 ################## 6.1.4 ##################
 
 
-def convert_from_b64():
+def convert_from_b64() -> None:
+    """
+    Converts string from base64
+    :return: None
+    """
     x = base64.b64decode(("CgkJICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAuLS0tW1tfX11dLS0tLS4KICAgICAg" +
                          "ICAgICAgICA7LS0tLS0tLS0tLS0tLS58ICAgICAgIF9fX18KICAgICAgICAgICAgICB8ICAgICAgICAgICAgIHx8" +
                          "ICAgLi0tW1tfX11dLS0tLgogICAgICAgICAgICAgIHwgICAgICAgICAgICAgfHwgIDstLS0tLS0tLS0tLS58CiAgI" +
@@ -17,7 +21,12 @@ def convert_from_b64():
 
 ################## 6.2.5 ##################
 
-def greeting_cards():
+
+def greeting_cards() -> None:
+    """
+    Creates cards and prints their message
+    :return: None
+    """
     gcard = GreetingCard()
     bcard = BirthdayCard()
 
@@ -27,7 +36,11 @@ def greeting_cards():
 ################## 6.3.3 ##################
 
 
-def text_to_speech():
+def text_to_speech() -> None:
+    """
+    Converts text to speech
+    :return: None
+    """
     text = "first time i'm using a package in next.py course"
     engine = pyttsx3.init()
     engine.say(text)
@@ -38,6 +51,7 @@ def main():
     convert_from_b64()
     greeting_cards()
     text_to_speech()
+
 
 if __name__ == '__main__':
     main()
